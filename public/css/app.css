@@ -3456,7 +3456,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 
 .navbar {
     position: relative;
-    padding: .5rem 1rem
+    padding: .1rem 1rem
 }
 
 .navbar, .navbar>.container, .navbar>.container-fluid {
@@ -3836,7 +3836,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 }
 
 .card-header {
-    padding: .75rem 1.25rem;
+    padding: .3rem 1.25rem;
     margin-bottom: 0;
     background-color: rgba(0, 0, 0, .03);
     border-bottom: 1px solid rgba(0, 0, 0, .125);
@@ -7882,7 +7882,7 @@ a.text-dark:focus, a.text-dark:hover {
 }
 
 .footer div {
-    line-height: 40px;
+    line-height: 35px;
     font-size: 16px;
     color: black;
 }
