@@ -17,12 +17,19 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
 
 
     <!-- Styles -->
+    
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet"> -->
 </head>
 <body>
     <div id="app">
@@ -43,8 +50,23 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
+                    <ul class="navbar-nav ml-auto navhead">
+                        
+                        @if(Auth::check())   
+                            <li class="nav-item">
+                                    <a class="nav-link" href="/cars">Car Garage</a>
+                            </li>
+                            <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">Gasoline Station</a>
+                            </li>
+                            <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">Restaurant & Coffee</a>
+                            </li>
+                            <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">Mart Store</a>
+                            </li>
+                        @endif
+                            <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}"><i class="fa fa-lock"></i> &nbsp;{{ __('Login') }}</a>
@@ -73,7 +95,7 @@
                                 </div>
                             </li>
                         @endguest
-                             <li class="nav-item">
+                            <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}"><i class="fa fa-bell"></i>&nbsp;<sup><span style="color:red;font-weight:bold;font-size:14px">12</span></sup></a>
                             </li>
                             <li class="nav-item">
@@ -85,8 +107,23 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
+        <main class="py-4" >
+        <div class="mycontainer" style="margin-top:-25px;">
+                <ol class="breadcrumb">
+                    <li><a href="/"><i class="fa fa-home"></i>&nbsp;Home &nbsp;</a></li>
+                    <?php $segments = ''; ?>
+                    @foreach(Request::segments() as $segment)
+                        <?php $segments .= '/'.$segment; ?>
+                        <li>
+                            <a href="{{ $segments }}">&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;{{$segment}}</a>
+                        </li>
+                    @endforeach
+                </ol>
+        </div>
+        <div class="mycontainer">
+             @yield('content')
+        </div>
+            
         </main>
 
         <div class="footer">
